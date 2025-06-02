@@ -1,34 +1,80 @@
-# Experiment 9(b): Binary Search Tree
-
-## Aim
-To write a Python program to build a Binary Search Tree (BST) using a built-in function.
+# Exp.No:37  
+## PRIORITY QUEUE
 
 ---
 
-## Algorithm
-
-1. Start the program.
-2. Import the `Node` class from the `binarytree` module.
-3. Define a function `_build_bst_from_sorted_values()` to build a BST recursively from a sorted list.
-4. Define a function `left_subtree()` to print the values in the left subtree of the BST.
-5. Accept input from the user for the number of elements.
-6. Read the elements into a list.
-7. Sort the list.
-8. Build the BST by calling `_build_bst_from_sorted_values()` with the sorted list.
-9. Print the postorder traversal of the BST.
-10. Print the left subtree values.
-11. Check and print whether the built tree is a Binary Search Tree.
-12. End the program.
+### AIM  
+To write a Python program for simple implementation of Priority Queue using Queue.
 
 ---
 
-## Program
+### ALGORITHM
+
+1. Start the program.  
+2. Define a class `PriorityQueue` with an initializer to create an empty list `queue`.  
+3. Define the `__str__` method to return queue elements as a string separated by spaces.  
+4. Define the `isEmpty()` method to check if the queue is empty.  
+5. Define the `insert(data)` method to append the given data to the queue.  
+6. Define the `delete()` method to:  
+   - Initialize `max_val` as 0.  
+   - Loop through the queue and find the index of the maximum value.  
+   - Delete and return the element at that index.  
+7. In the main code, take integer input `n` for number of elements.  
+8. Loop `n` times to take input values and insert them into the priority queue.  
+9. Print the contents of the queue.  
+10. While the queue is not empty, call `delete()` and print each returned element.  
+11. End the program.
+
+---
+
+### PROGRAM
 
 ```
 
+class PriorityQueue(object):
+	def __init__(self):
+		self.queue = []
+
+	def __str__(self):
+		return ' '.join([str(i) for i in self.queue])
+
+
+	def isEmpty(self):
+		return len(self.queue) == 0
+
+
+	def insert(self, data):
+		self.queue.append(data)
+
+	
+	def delete(self):
+		try:
+			max_val = 0
+			for i in range(len(self.queue)):
+				if self.queue[i] > self.queue[max_val]:
+					max_val = i
+			item = self.queue[max_val]
+			del self.queue[max_val]
+			return item
+		except IndexError:
+			print()
+			exit()
+
+
+myQueue = PriorityQueue()
+n=int(input())	
+for i in range(0, n):
+    ele = int(input())
+    myQueue.insert(ele)
+	
+print(myQueue)		
+while not myQueue.isEmpty():
+	print(myQueue.delete())
+
 ```
 
-## OUTPUT
+### OUTPUT
+![image](https://github.com/user-attachments/assets/9f899999-a063-493f-ab54-7c6a16b3bd4c)
 
-
-## RESULT
+### RESULT
+Thus, the Python program for the simple implementation of a Priority Queue using a Queue was successfully written and executed.
